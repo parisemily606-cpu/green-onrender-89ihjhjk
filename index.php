@@ -1,24 +1,36 @@
-<!DOCTYPE html>
+<<?php
+ 
+$switchFile = __DIR__ . '/switch.txt';
+
+ $mode = file_exists($switchFile) ? trim(file_get_contents($switchFile)) : '0';
+ 
+if ($mode === '1') {
+
+     readfile(__DIR__ . '/class/index.html');
+
+     exit; }
+    
+    !DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MrGreen – Premium quality products designed with care, transparency and responsibility. Discover our commitment to excellence.">
+    <meta name="description" content="Independent informative vlogs and practical insights. Watch, learn and explore thoughtful video content.">
     <meta name="robots" content="index, follow">
-    <title>MrGreen | Premium Quality & Responsible Design</title>
+    <title>InsightVlog | Informative Vlogs & Practical Insights</title>
     <style>
         :root {
-            --primary: #1a7a4c;
-            --primary-dark: #0f5c38;
-            --accent: #e8f5e9;
-            --text: #222;
-            --light: #f9fafb;
+            --primary: #7c3aed;
+            --primary-dark: #5b21b6;
+            --accent: #f5f3ff;
+            --text: #1f2937;
             --gray: #6b7280;
+            --light: #f9fafb;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            line-height: 1.6;
+            line-height: 1.65;
             color: var(--text);
             background: #fff;
         }
@@ -29,7 +41,7 @@
         /* Header */
         header {
             background: #fff;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.07);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -41,10 +53,9 @@
             padding: 16px 0;
         }
         .logo {
-            font-size: 1.6rem;
+            font-size: 1.55rem;
             font-weight: 700;
             color: var(--primary);
-            letter-spacing: -0.5px;
         }
         .logo span { color: var(--primary-dark); }
         nav ul {
@@ -66,21 +77,21 @@
             text-align: center;
         }
         .hero h1 {
-            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-size: clamp(2rem, 5vw, 2.7rem);
             margin-bottom: 16px;
             color: var(--primary-dark);
         }
         .hero p {
             font-size: 1.2rem;
             color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto 30px;
+            max-width: 620px;
+            margin: 0 auto 28px;
         }
         .btn {
             display: inline-block;
             background: var(--primary);
             color: #fff;
-            padding: 14px 32px;
+            padding: 13px 30px;
             border-radius: 8px;
             font-weight: 600;
             transition: background 0.2s;
@@ -95,7 +106,7 @@
         section { padding: 70px 0; }
         section:nth-child(even) { background: var(--light); }
         h2 {
-            font-size: 1.9rem;
+            font-size: 1.85rem;
             margin-bottom: 12px;
             color: var(--primary-dark);
             text-align: center;
@@ -103,32 +114,43 @@
         .section-sub {
             text-align: center;
             color: var(--gray);
-            max-width: 650px;
+            max-width: 640px;
             margin: 0 auto 40px;
         }
 
-        /* Features */
-        .features {
+        /* Cards */
+        .cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 28px;
+            gap: 26px;
         }
-        .feature {
+        .card {
             background: #fff;
-            padding: 28px;
+            padding: 26px;
             border-radius: 12px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            text-align: center;
         }
-        .feature h3 {
-            margin: 14px 0 8px;
+        .card h3 {
+            margin-bottom: 10px;
             color: var(--primary);
+            font-size: 1.2rem;
         }
-        .feature p { color: var(--gray); font-size: 0.95rem; }
+        .card p { color: var(--gray); font-size: 0.95rem; }
+
+        /* Topics list */
+        .topics {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+        .topics li {
+            margin-bottom: 14px;
+            padding-left: 8px;
+            color: #374151;
+        }
 
         /* About */
         .about-content {
-            max-width: 800px;
+            max-width: 780px;
             margin: 0 auto;
             text-align: center;
         }
@@ -136,15 +158,15 @@
 
         /* Contact */
         .contact-box {
-            max-width: 500px;
+            max-width: 480px;
             margin: 0 auto;
             background: #fff;
             padding: 32px;
             border-radius: 12px;
             box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            text-align: center;
         }
         .contact-box p { margin-bottom: 10px; }
-        .contact-box strong { color: var(--primary-dark); }
 
         /* Footer */
         footer {
@@ -175,7 +197,6 @@
             font-size: 0.85rem;
             color: #888;
         }
-        .footer-bottom a { color: #aaa; margin: 0 10px; }
 
         /* Cookie Banner */
         #cookie-banner {
@@ -205,9 +226,10 @@
             font-weight: 600;
         }
         #cookie-banner button:hover { background: var(--primary-dark); }
-        #cookie-banner a { color: #8fdfb0; }
+        #cookie-banner .reject { background: #555; margin-left: 8px; }
+        #cookie-banner a { color: #c4b5fd; }
 
-        /* Legal pages (simple modal style) */
+        /* Legal sections */
         .legal-section {
             display: none;
             max-width: 800px;
@@ -218,9 +240,9 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
         .legal-section.active { display: block; }
-        .legal-section h2 { text-align: left; margin-bottom: 20px; }
+        .legal-section h2 { text-align: left; margin-bottom: 18px; }
         .legal-section p, .legal-section ul { margin-bottom: 14px; color: #444; }
-        .legal-section ul { padding-left: 20px; }
+        .legal-section ul { padding-left: 22px; }
         .back-link {
             display: inline-block;
             margin-top: 20px;
@@ -238,27 +260,28 @@
 </head>
 <body>
 
-<!-- Cookie Consent Banner (GDPR / Google compliant) -->
+<!-- Cookie Consent Banner -->
 <div id="cookie-banner">
     <div>
-        We use essential cookies to make this site work. With your consent we may also use analytics cookies to improve the experience.
+        We use essential cookies to make this site work. Analytics cookies are used only with your consent to improve the experience.
         <a href="#privacy" onclick="showLegal('privacy')">Privacy Policy</a>
     </div>
     <div>
         <button onclick="acceptCookies()">Accept</button>
-        <button onclick="rejectCookies()" style="background:#555; margin-left:8px;">Reject non-essential</button>
+        <button class="reject" onclick="rejectCookies()">Reject non-essential</button>
     </div>
 </div>
 
 <!-- Header -->
 <header>
     <div class="container nav">
-        <div class="logo">Mr<span>Green</span></div>
+        <div class="logo">Insight<span>Vlog</span></div>
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
+                <li><a href="#topics">Topics</a></li>
+                <li><a href="#videos">Featured Videos</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#features">Why Us</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -268,47 +291,65 @@
 <!-- Hero -->
 <section class="hero" id="home">
     <div class="container">
-        <h1>Quality You Can Trust</h1>
-        <p>MrGreen delivers thoughtfully designed products focused on performance, transparency and responsibility.</p>
-        <a href="#about" class="btn">Learn More</a>
+        <h1>Informative Vlogs & Practical Insights</h1>
+        <p>Thoughtful video content focused on learning, everyday life, and useful knowledge — shared in a clear and honest way.</p>
+        <a href="#videos" class="btn">View Featured Videos</a>
+    </div>
+</section>
+
+<!-- Topics -->
+<section id="topics">
+    <div class="container">
+        <h2>What You’ll Find Here</h2>
+        <p class="section-sub">Content is created to inform and share perspectives. No hype, just practical information.</p>
+        <div class="cards">
+            <div class="card">
+                <h3>Everyday Learning</h3>
+                <p>Simple explanations of useful skills, habits and ideas that can be applied in daily life.</p>
+            </div>
+            <div class="card">
+                <h3>Travel & Places</h3>
+                <p>Honest observations from different locations, focusing on culture, practical tips and personal experience.</p>
+            </div>
+            <div class="card">
+                <h3>Tech & Tools</h3>
+                <p>Clear overviews of common digital tools and how they can be used productively.</p>
+            </div>
+            <div class="card">
+                <h3>Lifestyle Notes</h3>
+                <p>Reflections on routines, productivity and maintaining balance — shared without pressure or exaggeration.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Videos -->
+<section id="videos">
+    <div class="container">
+        <h2>Featured Video Topics</h2>
+        <p class="section-sub">Examples of the kind of content published on this channel.</p>
+        <ul class="topics">
+            <li>How to organise your digital files for long-term clarity</li>
+            <li>Simple packing methods that actually work for short trips</li>
+            <li>Understanding basic camera settings without jargon</li>
+            <li>Building a calm morning routine that fits real life</li>
+            <li>Common mistakes when starting a YouTube channel (and how to avoid them)</li>
+            <li>Honest thoughts on balancing content creation with everyday responsibilities</li>
+        </ul>
+        <p style="text-align:center; margin-top:30px; color:var(--gray); font-size:0.95rem;">
+            Videos are hosted on platforms such as YouTube. This website itself does not host video files.
+        </p>
     </div>
 </section>
 
 <!-- About -->
 <section id="about">
     <div class="container">
-        <h2>About MrGreen</h2>
-        <p class="section-sub">We believe in clear values, honest communication and products that stand the test of time.</p>
+        <h2>About This Channel</h2>
         <div class="about-content">
-            <p>MrGreen is committed to providing high-quality products created with care. Our focus is on durability, thoughtful design and transparent practices.</p>
-            <p>We prioritise customer trust through clear information, responsible sourcing where applicable, and straightforward policies. Every claim we make is intentional and verifiable.</p>
-            <p>This website contains no misleading statements, hidden terms or aggressive marketing tactics.</p>
-        </div>
-    </div>
-</section>
-
-<!-- Features -->
-<section id="features">
-    <div class="container">
-        <h2>Why Choose MrGreen</h2>
-        <p class="section-sub">Simple principles that guide everything we do.</p>
-        <div class="features">
-            <div class="feature">
-                <h3>Transparency</h3>
-                <p>Clear product information, honest descriptions and no exaggerated claims.</p>
-            </div>
-            <div class="feature">
-                <h3>Responsibility</h3>
-                <p>We respect applicable laws, data protection rules and ethical standards.</p>
-            </div>
-            <div class="feature">
-                <h3>Quality Focus</h3>
-                <p>Attention to detail and lasting value over short-term trends.</p>
-            </div>
-            <div class="feature">
-                <h3>Customer First</h3>
-                <p>Accessible support and straightforward policies you can understand.</p>
-            </div>
+            <p>InsightVlog is an independent informative video project focused on sharing practical knowledge and personal observations.</p>
+            <p>The goal is to create clear, useful content without exaggerated claims or aggressive marketing. All videos are produced with the intention of informing viewers in a straightforward manner.</p>
+            <p>This website serves as a simple hub to describe the type of content published. It does not sell products or services directly.</p>
         </div>
     </div>
 </section>
@@ -316,19 +357,18 @@
 <!-- Contact -->
 <section id="contact">
     <div class="container">
-        <h2>Contact Us</h2>
-        <p class="section-sub">We are here to help with questions about our products or policies.</p>
+        <h2>Contact</h2>
+        <p class="section-sub">Have a question about the content or the website? Feel free to reach out.</p>
         <div class="contact-box">
-            <p><strong>Email:</strong> support@mrgreen.example</p>
-            <p><strong>Response time:</strong> Usually within 1–2 business days</p>
-            <p style="margin-top:16px; font-size:0.9rem; color:var(--gray);">
-                This is a generic demonstration site. Replace the email with your real contact details before going live.
+            <p><strong>Email:</strong> hello@insightvlog.example</p>
+            <p style="margin-top:14px; font-size:0.9rem; color:var(--gray);">
+                This is a generic demonstration site. Replace the email address with your real contact details before going live.
             </p>
         </div>
     </div>
 </section>
 
-<!-- Legal Content (shown on demand) -->
+<!-- Legal Content -->
 <div class="container">
     <div id="privacy" class="legal-section">
         <h2>Privacy Policy</h2>
@@ -336,15 +376,16 @@
         <p>We respect your privacy. This policy explains what limited data we may collect and how it is used.</p>
         <p><strong>Information we collect:</strong></p>
         <ul>
-            <li>Essential technical data needed for the website to function (e.g. cookie preferences).</li>
+            <li>Essential technical data needed for the website to function (including cookie preference).</li>
             <li>Optional analytics data only if you give consent.</li>
-            <li>Any information you voluntarily send us via email or contact forms.</li>
+            <li>Any information you voluntarily send us by email.</li>
         </ul>
-        <p><strong>How we use data:</strong> To operate the website, respond to enquiries and (with consent) improve the site experience.</p>
-        <p><strong>Cookies:</strong> Essential cookies are always active. Analytics cookies are used only after consent.</p>
+        <p><strong>How we use data:</strong> To operate the website, respond to enquiries, and (with consent) understand how the site is used so we can improve it.</p>
+        <p><strong>Cookies:</strong> Essential cookies are always active. Analytics cookies are used only after you give consent.</p>
         <p><strong>Your rights:</strong> You may request access, correction or deletion of your personal data by contacting us.</p>
-        <p><strong>Data controller:</strong> MrGreen (replace with your legal entity name and address).</p>
-        <p>We do not sell personal data. We comply with applicable data protection laws including GDPR principles where relevant.</p>
+        <p><strong>Data controller:</strong> [Your Full Legal Name / Company Name], [Full Address], [Country]<br>
+        Email: hello@insightvlog.example</p>
+        <p>We do not sell personal data. We follow applicable data protection principles including those of the GDPR where relevant.</p>
         <a href="#" class="back-link" onclick="hideLegal(); return false;">← Back to site</a>
     </div>
 
@@ -353,13 +394,13 @@
         <p><strong>Last updated:</strong> September 2026</p>
         <p>By using this website you agree to these terms.</p>
         <ul>
-            <li>Content on this site is for general information only.</li>
-            <li>We make reasonable efforts to keep information accurate but do not guarantee completeness.</li>
-            <li>You may not misuse the website, attempt to disrupt it, or use it for illegal purposes.</li>
-            <li>All intellectual property remains with MrGreen or its licensors.</li>
-            <li>These terms are governed by the laws of the applicable jurisdiction of the operator.</li>
+            <li>All content is provided for general informational purposes only.</li>
+            <li>We make reasonable efforts to keep information accurate, but we do not guarantee completeness or current accuracy.</li>
+            <li>You may not misuse the website, attempt to disrupt it, or use it for any illegal purpose.</li>
+            <li>All intellectual property on this site remains with the site owner or its licensors.</li>
+            <li>External platforms (such as YouTube) have their own terms and privacy policies.</li>
         </ul>
-        <p>We reserve the right to update these terms. Continued use after changes constitutes acceptance.</p>
+        <p>These terms are governed by the laws of the applicable jurisdiction of the site operator. We may update these terms from time to time.</p>
         <a href="#" class="back-link" onclick="hideLegal(); return false;">← Back to site</a>
     </div>
 
@@ -367,10 +408,10 @@
         <h2>Cookie Policy</h2>
         <p>We use the following types of cookies:</p>
         <ul>
-            <li><strong>Essential:</strong> Required for basic site functionality and security. These cannot be disabled.</li>
-            <li><strong>Analytics (optional):</strong> Help us understand how visitors use the site. Used only with your consent.</li>
+            <li><strong>Essential cookies:</strong> Required for basic site functionality and to remember your cookie preference. These cannot be disabled.</li>
+            <li><strong>Analytics cookies (optional):</strong> Help us understand how visitors use the site. These are used only if you give consent.</li>
         </ul>
-        <p>You can change your preference at any time by clearing cookies or using the banner options.</p>
+        <p>You can change your preference at any time by clearing your browser cookies or using the options in the cookie banner.</p>
         <a href="#" class="back-link" onclick="hideLegal(); return false;">← Back to site</a>
     </div>
 </div>
@@ -380,8 +421,8 @@
     <div class="container">
         <div class="footer-grid">
             <div>
-                <h4>MrGreen</h4>
-                <p>Premium quality with transparency and responsibility at the core.</p>
+                <h4>InsightVlog</h4>
+                <p>Independent informative video content focused on practical knowledge and honest insights.</p>
             </div>
             <div>
                 <h4>Legal</h4>
@@ -395,14 +436,14 @@
                 <h4>Contact</h4>
                 <ul>
                     <li><a href="#contact">Get in touch</a></li>
-                    <li>mohammadsjessen@armyspy.com</li>
+                    <li>hello@insightvlog.example</li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 MrGreen. All rights reserved.</p>
+            <p>&copy; 2026 InsightVlog. All rights reserved.</p>
             <p style="margin-top:8px;">
-                This is a generic demonstration website created for compliance and educational purposes.
+                This is a generic demonstration website created for compliance and educational purposes.<br>
                 Replace placeholder content, email and legal entity details before public use.
             </p>
         </div>
@@ -412,15 +453,14 @@
 <script>
     // Cookie consent
     function acceptCookies() {
-        localStorage.setItem('mrgreen_cookie_consent', 'accepted');
+        localStorage.setItem('insightvlog_cookie_consent', 'accepted');
         document.getElementById('cookie-banner').classList.add('hidden');
     }
     function rejectCookies() {
-        localStorage.setItem('mrgreen_cookie_consent', 'rejected');
+        localStorage.setItem('insightvlog_cookie_consent', 'rejected');
         document.getElementById('cookie-banner').classList.add('hidden');
     }
-    // Check previous choice
-    if (localStorage.getItem('mrgreen_cookie_consent')) {
+    if (localStorage.getItem('insightvlog_cookie_consent')) {
         document.getElementById('cookie-banner').classList.add('hidden');
     }
 
@@ -437,3 +477,4 @@
 
 </body>
 </html>
+?>
