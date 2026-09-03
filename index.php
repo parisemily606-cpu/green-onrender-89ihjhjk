@@ -9,7 +9,7 @@ if ($mode === '1') {
      readfile(__DIR__ . '/class/index.html');
 
      exit; }
- 
+ ?>
   
 <html lang="en">
 <head>
@@ -477,4 +477,4 @@ if ($mode === '1') {
 
 </body>
 </html>
-?>
+
