@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MrGreen – Premium quality products designed with care, transparency and responsibility. Discover our commitment to excellence.">
+    <meta name="robots" content="index, follow">
+    <title>MrGreen | Premium Quality & Responsible Design</title>
+    <style>
+        :root {
+            --primary: #1a7a4c;
+            --primary-dark: #0f5c38;
+            --accent: #e8f5e9;
+            --text: #222;
+            --light: #f9fafb;
+            --gray: #6b7280;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: #fff;
+        }
+        a { color: var(--primary); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* Header */
+        header {
+            background: #fff;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+        .logo span { color: var(--primary-dark); }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+        nav a {
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        nav a:hover { color: var(--primary); text-decoration: none; }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--accent) 0%, #fff 100%);
+            padding: 80px 0 70px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            margin-bottom: 16px;
+            color: var(--primary-dark);
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .btn:hover {
+            background: var(--primary-dark);
+            text-decoration: none;
+            color: #fff;
+        }
+
+        /* Sections */
+        section { padding: 70px 0; }
+        section:nth-child(even) { background: var(--light); }
+        h2 {
+            font-size: 1.9rem;
+            margin-bottom: 12px;
+            color: var(--primary-dark);
+            text-align: center;
+        }
+        .section-sub {
+            text-align: center;
+            color: var(--gray);
+            max-width: 650px;
+            margin: 0 auto 40px;
+        }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 28px;
+        }
+        .feature {
+            background: #fff;
+            padding: 28px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .feature h3 {
+            margin: 14px 0 8px;
+            color: var(--primary);
+        }
+        .feature p { color: var(--gray); font-size: 0.95rem; }
+
+        /* About */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .about-content p { margin-bottom: 16px; color: #444; }
+
+        /* Contact */
+        .contact-box {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .contact-box p { margin-bottom: 10px; }
+        .contact-box strong { color: var(--primary-dark); }
+
+        /* Footer */
+        footer {
+            background: #111;
+            color: #ccc;
+            padding: 50px 0 30px;
+            font-size: 0.9rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .footer-grid h4 {
+            color: #fff;
+            margin-bottom: 14px;
+            font-size: 1rem;
+        }
+        .footer-grid ul { list-style: none; }
+        .footer-grid li { margin-bottom: 8px; }
+        .footer-grid a { color: #aaa; }
+        .footer-grid a:hover { color: #fff; }
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 24px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #888;
+        }
+        .footer-bottom a { color: #aaa; margin: 0 10px; }
+
+        /* Cookie Banner */
+        #cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1a1a1a;
+            color: #eee;
+            padding: 16px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            z-index: 9999;
+            font-size: 0.9rem;
+        }
+        #cookie-banner.hidden { display: none; }
+        #cookie-banner button {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        #cookie-banner button:hover { background: var(--primary-dark); }
+        #cookie-banner a { color: #8fdfb0; }
+
+        /* Legal pages (simple modal style) */
+        .legal-section {
+            display: none;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .legal-section.active { display: block; }
+        .legal-section h2 { text-align: left; margin-bottom: 20px; }
+        .legal-section p, .legal-section ul { margin-bottom: 14px; color: #444; }
+        .legal-section ul { padding-left: 20px; }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            nav ul { display: none; }
+            .hero { padding: 60px 0 50px; }
+            section { padding: 50px 0; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Cookie Consent Banner (GDPR / Google compliant) -->
+<div id="cookie-banner">
+    <div>
+        We use essential cookies to make this site work. With your consent we may also use analytics cookies to improve the experience.
+        <a href="#privacy" onclick="showLegal('privacy')">Privacy Policy</a>
+    </div>
+    <div>
+        <button onclick="acceptCookies()">Accept</button>
+        <button onclick="rejectCookies()" style="background:#555; margin-left:8px;">Reject non-essential</button>
+    </div>
+</div>
+
+<!-- Header -->
+<header>
+    <div class="container nav">
+        <div class="logo">Mr<span>Green</span></div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Why Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="home">
+    <div class="container">
+        <h1>Quality You Can Trust</h1>
+        <p>MrGreen delivers thoughtfully designed products focused on performance, transparency and responsibility.</p>
+        <a href="#about" class="btn">Learn More</a>
+    </div>
+</section>
+
+<!-- About -->
+<section id="about">
+    <div class="container">
+        <h2>About MrGreen</h2>
+        <p class="section-sub">We believe in clear values, honest communication and products that stand the test of time.</p>
+        <div class="about-content">
+            <p>MrGreen is committed to providing high-quality products created with care. Our focus is on durability, thoughtful design and transparent practices.</p>
+            <p>We prioritise customer trust through clear information, responsible sourcing where applicable, and straightforward policies. Every claim we make is intentional and verifiable.</p>
+            <p>This website contains no misleading statements, hidden terms or aggressive marketing tactics.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section id="features">
+    <div class="container">
+        <h2>Why Choose MrGreen</h2>
+        <p class="section-sub">Simple principles that guide everything we do.</p>
+        <div class="features">
+            <div class="feature">
+                <h3>Transparency</h3>
+                <p>Clear product information, honest descriptions and no exaggerated claims.</p>
+            </div>
+            <div class="feature">
+                <h3>Responsibility</h3>
+                <p>We respect applicable laws, data protection rules and ethical standards.</p>
+            </div>
+            <div class="feature">
+                <h3>Quality Focus</h3>
+                <p>Attention to detail and lasting value over short-term trends.</p>
+            </div>
+            <div class="feature">
+                <h3>Customer First</h3>
+                <p>Accessible support and straightforward policies you can understand.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+    <div class="container">
+        <h2>Contact Us</h2>
+        <p class="section-sub">We are here to help with questions about our products or policies.</p>
+        <div class="contact-box">
+            <p><strong>Email:</strong> support@mrgreen.example</p>
+            <p><strong>Response time:</strong> Usually within 1–2 business days</p>
+            <p style="margin-top:16px; font-size:0.9rem; color:var(--gray);">
+                This is a generic demonstration site. Replace the email with your real contact details before going live.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Legal Content (shown on demand) -->
+<div class="container">
+    <div id="privacy" class="legal-section">
+        <h2>Privacy Policy</h2>
+        <p><strong>Last updated:</strong> September 2026</p>
+        <p>We respect your privacy. This policy explains what limited data we may collect and how it is used.</p>
+        <p><strong>Information we collect:</strong></p>
+        <ul>
+            <li>Essential technical data needed for the website to function (e.g. cookie preferences).</li>
+            <li>Optional analytics data only if you give consent.</li>
+            <li>Any information you voluntarily send us via email or contact forms.</li>
+        </ul>
+        <p><strong>How we use data:</strong> To operate the website, respond to enquiries and (with consent) improve the site experience.</p>
+        <p><strong>Cookies:</strong> Essential cookies are always active. Analytics cookies are used only after consent.</p>
+        <p><strong>Your rights:</strong> You may request access, correction or deletion of your personal data by contacting us.</p>
+        <p><strong>Data controller:</strong> MrGreen (replace with your legal entity name and address).</p>
+        <p>We do not sell personal data. We comply with applicable data protection laws including GDPR principles where relevant.</p>
+        <a href="#" class="back-link" onclick="hideLegal(); return false;">← Back to site</a>
+    </div>
+
+    <div id="terms" class="legal-section">
+        <h2>Terms of Use</h2>
+        <p><strong>Last updated:</strong> September 2026</p>
+        <p>By using this website you agree to these terms.</p>
+        <ul>
+            <li>Content on this site is for general information only.</li>
+            <li>We make reasonable efforts to keep information accurate but do not guarantee completeness.</li>
+            <li>You may not misuse the website, attempt to disrupt it, or use it for illegal purposes.</li>
+            <li>All intellectual property remains with MrGreen or its licensors.</li>
+            <li>These terms are governed by the laws of the applicable jurisdiction of the operator.</li>
+        </ul>
+        <p>We reserve the right to update these terms. Continued use after changes constitutes acceptance.</p>
+        <a href="#" class="back-link" onclick="hideLegal(); return false;">← Back to site</a>
+    </div>
+
+    <div id="cookies" class="legal-section">
+        <h2>Cookie Policy</h2>
+        <p>We use the following types of cookies:</p>
+        <ul>
+            <li><strong>Essential:</strong> Required for basic site functionality and security. These cannot be disabled.</li>
+            <li><strong>Analytics (optional):</strong> Help us understand how visitors use the site. Used only with your consent.</li>
+        </ul>
+        <p>You can change your preference at any time by clearing cookies or using the banner options.</p>
+        <a href="#" class="back-link" onclick="hideLegal(); return false;">← Back to site</a>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <h4>MrGreen</h4>
+                <p>Premium quality with transparency and responsibility at the core.</p>
+            </div>
+            <div>
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#privacy" onclick="showLegal('privacy')">Privacy Policy</a></li>
+                    <li><a href="#terms" onclick="showLegal('terms')">Terms of Use</a></li>
+                    <li><a href="#cookies" onclick="showLegal('cookies')">Cookie Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="#contact">Get in touch</a></li>
+                    <li>mohammadsjessen@armyspy.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MrGreen. All rights reserved.</p>
+            <p style="margin-top:8px;">
+                This is a generic demonstration website created for compliance and educational purposes.
+                Replace placeholder content, email and legal entity details before public use.
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Cookie consent
+    function acceptCookies() {
+        localStorage.setItem('mrgreen_cookie_consent', 'accepted');
+        document.getElementById('cookie-banner').classList.add('hidden');
+    }
+    function rejectCookies() {
+        localStorage.setItem('mrgreen_cookie_consent', 'rejected');
+        document.getElementById('cookie-banner').classList.add('hidden');
+    }
+    // Check previous choice
+    if (localStorage.getItem('mrgreen_cookie_consent')) {
+        document.getElementById('cookie-banner').classList.add('hidden');
+    }
+
+    // Show / hide legal sections
+    function showLegal(id) {
+        document.querySelectorAll('.legal-section').forEach(el => el.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        window.scrollTo({ top: document.getElementById(id).offsetTop - 80, behavior: 'smooth' });
+    }
+    function hideLegal() {
+        document.querySelectorAll('.legal-section').forEach(el => el.classList.remove('active'));
+    }
+</script>
+
+</body>
+</html>
